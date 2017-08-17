@@ -1,8 +1,10 @@
+import * as types from '../actions/actionTypes'
+
 export default function postReducer (state = [], action) {
     switch(action.type){
-        case 'CREATE_POST' :
+        case types.CREATE_POST :
             return [...state,
-                Object.assing({}, action.course)
+                Object.assign({}, action.course)
             ]
         default :
             return state

@@ -12,5 +12,5 @@ render((
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </Provider>    
+    </Provider>
 ), document.getElementById('root'))

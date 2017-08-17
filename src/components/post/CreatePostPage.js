@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import  { bindActionCreators } from 'redux'
+import * as postActions from '../../actions/postActions'
 
 class CreatePostPage extends Component{
     state = {
         title: '',
         body: '',
         author: '',
-        categoryId: null
+        category: null
     }
 
     handleChange = (key) => {
@@ -15,9 +18,14 @@ class CreatePostPage extends Component{
         }
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.props.actions.createPost(this.state)
+    }
+
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <FormGroup
                     controlId="addPost"
                 >
@@ -62,5 +70,16 @@ class CreatePostPage extends Component{
     }
 }
 
+function mapStateToProps (state, ownProps) {
+    return {
+        posts: state.posts,
+    }
+}
 
-export default CreatePostPage
+function mapDispatchToProps (dispatch) {
+    return {
+        actions: bindActionCreators(postActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePostPage)
