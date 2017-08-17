@@ -1,0 +1,49 @@
+import React from 'react'
+import TextInput from '../common/TextInput'
+import SelectInput from '../common/SelectInput'
+import { Button } from 'react-bootstrap'
+
+function PostForm ({post, categories, onSave, onChange, loading, errors}) {
+    return (
+        <form>
+            <SelectInput
+                name="category"
+                label="Category"
+                value={post.author}
+                onChange={onChange}
+                error={errors.body}
+                options={[]}
+                defaultOption="Select Category"
+            />
+            <TextInput
+                name="title"
+                label="Title"
+                value={post.title}
+                onChange={onChange}
+                error={errors.title}
+            />
+            <TextInput
+                name="body"
+                label="Body"
+                value={post.body}
+                onChange={onChange}
+                error={errors.body}
+            />
+            <TextInput
+                name="author"
+                label="Author"
+                value={post.author}
+                onChange={onChange}
+                error={errors.body}
+            />
+            <Button
+                type="submit"
+                disabled={loading}
+            >
+                {loading ? 'Saving...' : 'Save'}
+            </Button>
+        </form>
+    )
+}
+
+export default PostForm

@@ -4,7 +4,7 @@ export default function postReducer (state = [], action) {
     switch(action.type){
         case types.CREATE_POST :
             return [...state,
-                Object.assign({}, action.course)
+                Object.assign({}, action.post)
             ]
         case types.LOAD_POSTS_SUCCESS :
             return action.posts
