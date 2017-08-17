@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import  { bindActionCreators } from 'redux'
 import * as postActions from '../../actions/postActions'
 
-class CreatePostPage extends Component{
+class ManagePostPage extends Component{
     state = {
         title: '',
         body: '',
@@ -82,4 +82,4 @@ function mapDispatchToProps (dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePostPage)
+export default connect(mapStateToProps, mapDispatchToProps)(ManagePostPage)
