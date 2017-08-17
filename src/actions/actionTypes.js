@@ -1,1 +1,2 @@
+export const LOAD_POSTS_SUCCESS = 'LOAD_POSTS_SUCCESS'
 export const CREATE_POST = 'CREATE_POST'

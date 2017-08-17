@@ -6,6 +6,8 @@ export default function postReducer (state = [], action) {
             return [...state,
                 Object.assign({}, action.course)
             ]
+        case types.LOAD_POSTS_SUCCESS :
+            return action.posts
         default :
             return state
     }
