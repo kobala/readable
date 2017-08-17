@@ -5,7 +5,7 @@ import Footer from './common/Footer'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Switch, Route } from 'react-router-dom'
 import DefaultPage from './default/DefaultPage'
-import CreatePostPage from './post/CreatePostPage'
+import ManagePostPage from './post/ManagePostPage'
 
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={DefaultPage} />
-                  <Route exact path="/post/create" component={CreatePostPage} />
+                  <Route exact path="/post/create" component={ManagePostPage} />
                 </Switch>
               </div>
           </div>
