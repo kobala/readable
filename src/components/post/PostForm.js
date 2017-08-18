@@ -3,9 +3,9 @@ import TextInput from '../common/TextInput'
 import SelectInput from '../common/SelectInput'
 import { Button } from 'react-bootstrap'
 
-function PostForm ({post, categories, onSave, onChange, loading, errors}) {
+function PostForm ({post, categories, onSubmit, onChange, loading, errors}) {
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <SelectInput
                 name="category"
                 label="Category"

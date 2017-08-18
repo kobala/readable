@@ -16,9 +16,9 @@ class ManagePostPage extends Component{
         this.setState({ post })
     }
 
-    handleSubmit = (event) => {
+    onSave = (event) => {
         event.preventDefault()
-        this.props.actions.createPost(this.state)
+        this.props.actions.savePost(this.state.post)
     }
 
     render() {
@@ -27,6 +27,7 @@ class ManagePostPage extends Component{
                 post={this.state.post}
                 categories={this.props.categories}
                 onChange={this.handleChange}
+                onSubmit={this.onSave}
                 errors={this.state.errors}
             />
         )
