@@ -25,7 +25,7 @@ class ManagePostPage extends Component{
         return (
             <PostForm
                 post={this.state.post}
-                categories={[]}
+                categories={this.props.categories}
                 onChange={this.handleChange}
                 errors={this.state.errors}
             />
@@ -33,10 +33,19 @@ class ManagePostPage extends Component{
     }
 }
 
-function mapStateToProps (state, ownProps) {
-    let post = { title: '', body: '', author: '', category: null }
+function mapStateToProps (state) {
+    let post = { title: '', body: '', author: '', category: '' }
+
+    const categories = state.categories.map(category => {
+        return {
+            text: category.name.charAt(0).toUpperCase() + category.name.slice(1),
+            value: category.name
+        }
+    })
+
     return {
         post,
+        categories
     }
 }
 

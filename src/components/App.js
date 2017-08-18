@@ -6,13 +6,15 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Switch, Route } from 'react-router-dom'
 import DefaultPage from './default/DefaultPage'
 import ManagePostPage from './post/ManagePostPage'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 class App extends Component {
   render() {
     return (
         <div id="app">
           <div id="wrap">
-            <Header />
+            <Header categories={this.props.categories}/>
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={DefaultPage} />
@@ -26,4 +28,17 @@ class App extends Component {
   }
 }
 
-export default App
+function mapStateToProps (state) {
+    const categories = state.categories.map(category => {
+        return {
+            text: category.name.charAt(0).toUpperCase() + category.name.slice(1),
+            path: category.path
+        }
+    })
+
+    return {
+        categories
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(App))

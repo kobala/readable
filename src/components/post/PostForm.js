@@ -9,10 +9,10 @@ function PostForm ({post, categories, onSave, onChange, loading, errors}) {
             <SelectInput
                 name="category"
                 label="Category"
-                value={post.author}
+                value={post.category}
                 onChange={onChange}
                 error={errors.body}
-                options={[]}
+                options={categories}
                 defaultOption="Select Category"
             />
             <TextInput

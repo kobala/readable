@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Nav, Navbar, FormGroup, FormControl, Button, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
-const Header = () => (
+const Header = ({ categories }) => (
     <Navbar>
         <Navbar.Header>
             <Navbar.Brand>
@@ -13,9 +13,15 @@ const Header = () => (
         </Navbar.Header>
         <Navbar.Collapse>
             <Nav>
-                <LinkContainer to="/">
-                    <NavItem eventKey={1}>Home</NavItem>
+                <LinkContainer exact to="/">
+                    <NavItem eventKey={0}>Home</NavItem>
                 </LinkContainer>
+                {categories.map((category, key) => (
+                             <LinkContainer to={`/${category.path}`} key={key}>
+                                <NavItem eventKey={++key}>{category.text}</NavItem>
+                            </LinkContainer>
+                    )
+                )}
             </Nav>
             <Navbar.Form pullRight>
                 <FormGroup>
