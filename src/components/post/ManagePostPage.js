@@ -13,12 +13,53 @@ class ManagePostPage extends Component{
     handleChange = (e) => {
         let { post } = this.state
         post[e.target.name] = e.target.value
+
+        if(this.state.errors){
+            this.validateForm()
+        }
+        
         this.setState({ post })
+    }
+
+    validateForm = () => {
+        let post = this.state.post;
+        let errors = {};
+        let formIsValid = true;
+
+        //category
+        if(!post["category"]){
+            formIsValid = false;
+            errors["category"] = "Category is required";
+        }
+
+        //title
+        if(!post["title"]){
+            formIsValid = false;
+            errors["title"] = "Title is required";
+        }
+
+        //body
+        if(!post["body"]){
+            formIsValid = false;
+            errors["body"] = "Body is required";
+        }
+
+        //author
+        if(!post["author"]){
+            formIsValid = false;
+            errors["author"] = "Body is required";
+        }
+
+        this.setState({errors: errors});
+        return formIsValid;
     }
 
     onSave = (event) => {
         event.preventDefault()
-        this.props.actions.savePost(this.state.post)
+        if(this.validateForm()){
+            this.props.actions.savePost(this.state.post)
+            this.props.history.push("/")
+        }
     }
 
     render() {

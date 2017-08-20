@@ -11,7 +11,7 @@ function PostForm ({post, categories, onSubmit, onChange, loading, errors}) {
                 label="Category"
                 value={post.category}
                 onChange={onChange}
-                error={errors.body}
+                error={errors.category}
                 options={categories}
                 defaultOption="Select Category"
             />
@@ -34,7 +34,7 @@ function PostForm ({post, categories, onSubmit, onChange, loading, errors}) {
                 label="Author"
                 value={post.author}
                 onChange={onChange}
-                error={errors.body}
+                error={errors.author}
             />
             <Button
                 type="submit"
