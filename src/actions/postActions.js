@@ -1,16 +1,17 @@
 import * as types from './actionTypes'
 import * as readableAPI from '../utils/readableAPI'
+import * as helpers from '../utils/helpers'
 
 export function loadPostsSuccess(posts) {
     return { type: types.LOAD_POSTS_SUCCESS, posts }
 }
 
-export function createPostSuccess(posts) {
-    return { type: types.CREATE_POST_SUCCESS, posts }
+export function createPostSuccess(post) {
+    return { type: types.CREATE_POST_SUCCESS, post }
 }
 
-export function updatePostSuccess(posts) {
-    return { type: types.UPDATE_POST_SUCCESS, posts }
+export function updatePostSuccess(post) {
+    return { type: types.UPDATE_POST_SUCCESS, post }
 }
 
 export function loadPosts () {
@@ -25,9 +26,16 @@ export function loadPosts () {
 
 export function savePost (post) {
     return function (dispatch) {
-        return readableAPI.addPost(post).then(savedPost => {
-            post.id ? dispatch(updatePostSuccess(savedPost)) :
-                dispatch(createPostSuccess)
+        if(post.id){
+            return readableAPI.editPost(post.id, post).then(savedPost => {
+                dispatch(createPostSuccess(savedPost))
+            }).catch(error => {
+                throw (error)
+            })
+        }
+
+        return readableAPI.addPost(Object.assign(post, { id: helpers.guid(), timestamp: Date.now() })).then(savedPost => {
+            dispatch(createPostSuccess(savedPost))
         }).catch(error => {
             throw (error)
         })

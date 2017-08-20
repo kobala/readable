@@ -9,6 +9,7 @@ import ManagePostPage from './post/ManagePostPage'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
+
 class App extends Component {
   render() {
     return (
@@ -19,6 +20,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component={DefaultPage} />
                   <Route exact path="/post/create" component={ManagePostPage} />
+                  <Route exact path="/post/:id" component={DefaultPage} />
                 </Switch>
               </div>
           </div>
