@@ -8,3 +8,16 @@ export function guid () {
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         s4() + '-' + s4() + s4() + s4()
 }
+
+export function formatDate(timestamp) {
+    const monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ];
+
+    const date = new Date(timestamp);
+
+    return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`
+}

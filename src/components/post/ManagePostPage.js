@@ -17,7 +17,7 @@ class ManagePostPage extends Component{
         if(this.state.errors){
             this.validateForm()
         }
-        
+
         this.setState({ post })
     }
 
