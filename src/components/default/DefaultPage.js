@@ -14,7 +14,7 @@ class DefaultPage extends Component{
                     <Row>
                         {this.props.posts.map((post, key) => (
                             <Col xs={6} md={4} key={key}>
-                                <h3><Link to={`/post/${post.id}/edit`}>{post.title}</Link></h3>
+                                <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
                                 <span>{helpers.formatDate(post.timestamp)}</span>
                                 <p>{post.body}</p>
                                 <p>

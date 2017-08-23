@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Switch, Route } from 'react-router-dom'
 import DefaultPage from './default/DefaultPage'
 import ManagePostPage from './post/ManagePostPage'
+import PostDetailsPage from './post/PostDetailsPage'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
@@ -20,6 +21,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component={DefaultPage} />
                   <Route exact path="/post/create" component={ManagePostPage} />
+                  <Route exact path="/post/:id" component={PostDetailsPage} />
                   <Route exact path="/post/:id/edit" component={ManagePostPage} />
                 </Switch>
               </div>
