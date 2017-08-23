@@ -14,7 +14,7 @@ class ManagePostPage extends Component{
         let { post } = this.state
         post[e.target.name] = e.target.value
 
-        if(this.state.errors){
+        if(Object.keys(this.state.errors).length > 0){
             this.validateForm()
         }
 
