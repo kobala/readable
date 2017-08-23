@@ -31,7 +31,7 @@ export const addPost = (post) =>
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(post)
-    })
+    }).then(res => res.json())
 
 export const getPostById = (postId) =>
     fetch(`${api}/posts/${postId}`, { headers })
