@@ -16,7 +16,7 @@ export function updatePostSuccess(post) {
 
 export function loadPosts () {
     return function (dispatch) {
-        return readableAPI.getPosts().then(posts => {
+        return readableAPI.getAllPosts().then(posts => {
             dispatch(loadPostsSuccess(posts))
         }).catch(error => {
             throw (error)
@@ -34,7 +34,7 @@ export function savePost (post) {
             })
         }
 
-        return readableAPI.addPost(Object.assign(post, { id: helpers.guid(), timestamp: Date.now() })).then(savedPost => {
+        return readableAPI.savePost(Object.assign(post, { id: helpers.guid(), timestamp: Date.now() })).then(savedPost => {
             dispatch(createPostSuccess(savedPost))
         }).catch(error => {
             throw (error)

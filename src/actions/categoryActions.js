@@ -7,7 +7,7 @@ export function loadCategoriesSuccess (categories) {
 
 export function loadCategories () {
     return dispatch => {
-        return readableApi.getCategories().then(categories => {
+        return readableApi.getAllCategories().then(categories => {
             dispatch(loadCategoriesSuccess(categories))
         }).catch(error => {
             throw (error)
