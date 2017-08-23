@@ -20,7 +20,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component={DefaultPage} />
                   <Route exact path="/post/create" component={ManagePostPage} />
-                  <Route exact path="/post/:id" component={DefaultPage} />
+                  <Route exact path="/post/:id/edit" component={ManagePostPage} />
                 </Switch>
               </div>
           </div>
