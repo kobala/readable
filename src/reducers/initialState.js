@@ -2,7 +2,7 @@ export default {
     categories: [],
     posts: [],
     postsFilter: {
-        sorting: '',
+        sorting: 'date_desc',
         keyword: ''
     }
 }

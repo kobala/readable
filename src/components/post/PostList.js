@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Row, Col, Button, Glyphicon, Label } from 'react-bootstrap'
+import { Grid, Row, Col, Button } from 'react-bootstrap'
 import * as helpers from '../../utils/helpers'
 import escapeRegExp from 'escape-string-regexp'
 import { connect } from 'react-redux'

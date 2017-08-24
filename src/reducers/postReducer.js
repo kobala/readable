@@ -19,6 +19,11 @@ export default function postReducer (state = initialState.posts, action) {
             return [
                 ...state.filter(post => post.id !== action.postId)
             ]
+        case types.VOTE_POST_SUCCESS :
+            return [
+                ...state.filter(post => post.id !== action.post.id),
+                Object.assign({}, action.post)
+            ]
         default :
             return state
     }

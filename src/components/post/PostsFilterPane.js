@@ -12,23 +12,22 @@ const PostsFilterPane = ({ selectedSorting, keyword, onSortingChange, onKeywordC
                 onChange={onSortingChange}
                 options={[
                     {
-                        text: 'Vote Score - Highest to Lowest',
-                        value: 'vote_desc'
-                    },
-                    {
-                        text: 'Vote Score - Lowest to Highest',
-                        value: 'vote_asc'
-                    },
-                    {
                         text: 'Date - Newest to Oldest',
                         value: 'date_desc'
                     },
                     {
                         text: 'Date - Oldest to Newest',
                         value: 'date_asc'
+                    },
+                    {
+                        text: 'Vote Score - Highest to Lowest',
+                        value: 'vote_desc'
+                    },
+                    {
+                        text: 'Vote Score - Lowest to Highest',
+                        value: 'vote_asc'
                     }
                 ]}
-                defaultOption="Sort By"
             />
             &nbsp;
             <FormControl type="text" placeholder="Search" value={keyword} onChange={onKeywordChange} />

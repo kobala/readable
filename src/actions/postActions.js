@@ -18,6 +18,10 @@ export function deletePostSuccess(postId) {
     return { type: types.DELETE_POST_SUCCESS, postId }
 }
 
+export function votePostSuccess(post) {
+    return { type: types.VOTE_POST_SUCCESS, post }
+}
+
 export function loadPosts () {
     return function (dispatch) {
         return readableAPI.getAllPosts().then(posts => {
@@ -50,6 +54,16 @@ export function deletePost (postId) {
     return function (dispatch) {
         return readableAPI.deletePost(postId).then(() => {
             dispatch(deletePostSuccess(postId))
+        }).catch(error => {
+            throw (error)
+        })
+    }
+}
+
+export function votePost (postId, option) {
+    return function (dispatch) {
+        return readableAPI.votePost(postId, option).then((post) => {
+            dispatch(votePostSuccess(post))
         }).catch(error => {
             throw (error)
         })
