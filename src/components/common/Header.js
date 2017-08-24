@@ -17,7 +17,7 @@ const Header = ({ categories }) => (
                     <NavItem eventKey={0}>Home</NavItem>
                 </LinkContainer>
                 {categories.map((category, key) => (
-                             <LinkContainer to={`/${category.path}`} key={key}>
+                             <LinkContainer to={`/posts/${category.path}`} key={key}>
                                 <NavItem eventKey={++key}>{category.text}</NavItem>
                             </LinkContainer>
                     )
@@ -25,7 +25,7 @@ const Header = ({ categories }) => (
             </Nav>
             <Navbar.Form pullRight>
                 <FormGroup>
-                    <LinkContainer to="post/create">
+                    <LinkContainer to="/post/create">
                         <Button>Add post</Button>
                     </LinkContainer>
                 </FormGroup>

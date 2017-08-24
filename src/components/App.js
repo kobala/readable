@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom'
 import DefaultPage from './default/DefaultPage'
 import ManagePostPage from './post/ManagePostPage'
 import PostDetailsPage from './post/PostDetailsPage'
+import PostsPage from './category/PostsPage'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
@@ -23,6 +24,7 @@ class App extends Component {
                   <Route exact path="/post/create" component={ManagePostPage} />
                   <Route exact path="/post/:id" component={PostDetailsPage} />
                   <Route exact path="/post/:id/edit" component={ManagePostPage} />
+                  <Route exact path="/posts/:category" component={PostsPage}/>
                 </Switch>
               </div>
           </div>

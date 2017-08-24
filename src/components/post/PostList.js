@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Row, Col, Button } from 'react-bootstrap'
+import { Grid, Row, Col, Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap'
 import * as helpers from '../../utils/helpers'
 import { LinkContainer } from 'react-router-bootstrap'
 import DeletePostButton from '../post/DeletePostButton'
@@ -8,6 +8,14 @@ import DeletePostButton from '../post/DeletePostButton'
 function PostList ({posts}) {
     return (
         <Grid>
+            <ButtonGroup>
+                <DropdownButton title="Dropdown" id="bg-nested-dropdown">
+                    <MenuItem eventKey="order-none">Sort By</MenuItem>
+                    <MenuItem eventKey="order-voteScore">Vote Score</MenuItem>
+                    <MenuItem eventKey="order-timestamp">Date - Oldest to Newest</MenuItem>
+                    <MenuItem eventKey="order-timestamp">Date - Newest to Oldest</MenuItem>
+                </DropdownButton>
+            </ButtonGroup>
             <Row>
                 {posts.filter(post => !post.deleted).map((post, key) => (
                     <Col xs={6} md={4} key={key}>
