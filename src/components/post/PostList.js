@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Row, Col, Button } from 'react-bootstrap'
+import { Grid, Row, Col, Button, Glyphicon, Label } from 'react-bootstrap'
 import * as helpers from '../../utils/helpers'
 import escapeRegExp from 'escape-string-regexp'
 import { connect } from 'react-redux'
@@ -8,7 +8,8 @@ import  { bindActionCreators } from 'redux'
 import * as filterActions from '../../actions/filterActions'
 import { LinkContainer } from 'react-router-bootstrap'
 import DeletePostButton from '../post/DeletePostButton'
-import FilterPane from '../common/FilterPane'
+import PostsFilterPane from '../post/PostsFilterPane'
+import PostVoteForm from '../post/PostVoteForm'
 
 class PostList extends Component{
     handleSortingChange = (event) => {
@@ -56,7 +57,7 @@ class PostList extends Component{
         return (
             <Grid>
                 <Row>
-                    <FilterPane
+                    <PostsFilterPane
                         selectedSorting={sorting}
                         onSortingChange={this.handleSortingChange}
                         keyword={keyword}
@@ -68,6 +69,8 @@ class PostList extends Component{
                             <span>{helpers.formatDate(post.timestamp)}</span>
                             <p>{post.body}</p>
                             <p>By: {post.author}</p>
+                            <PostVoteForm post={post} />
+                            <hr />
                             <p>
                                 <LinkContainer to={`/post/${post.id}`}>
                                     <Button bsStyle="primary">Details</Button>
