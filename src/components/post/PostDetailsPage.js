@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Button } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 class ManagePostPage extends Component{
     state = {
@@ -12,12 +14,20 @@ class ManagePostPage extends Component{
     }
 
     render() {
+        const { post } = this.state
+
         return (
             <div>
-                <div class="page-header">
-                    <h1>{this.state.post.title}</h1>
+                <div className="page-header">
+                    <h1>{post.title}</h1>
                 </div>
-                <p class="lead">{this.state.post.body}</p>
+                <p className="lead">{post.body}</p>
+                <div>
+                    <LinkContainer to={`/post/${post.id}/edit`}>
+                        <Button bsStyle="default">Edit</Button>
+                    </LinkContainer>&nbsp;
+                    <Button bsStyle="danger">Delete</Button>
+                </div>
             </div>
         )
     }

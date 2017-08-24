@@ -55,7 +55,7 @@ export const editPost = (postId, postDetails) =>
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(postDetails)
-    })
+    }).then(res => res.json())
 
 export const deletePost = (postId) =>
     fetch(`${api}/posts/${postId}`, {

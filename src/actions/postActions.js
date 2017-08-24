@@ -28,7 +28,7 @@ export function savePost (post) {
     return function (dispatch) {
         if(post.id){
             return readableAPI.editPost(post.id, post).then(savedPost => {
-                dispatch(createPostSuccess(savedPost))
+                dispatch(updatePostSuccess(savedPost))
             }).catch(error => {
                 throw (error)
             })
