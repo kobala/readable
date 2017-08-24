@@ -14,6 +14,10 @@ export function updatePostSuccess(post) {
     return { type: types.UPDATE_POST_SUCCESS, post }
 }
 
+export function deletePostSuccess(postId) {
+    return { type: types.DELETE_POST_SUCCESS, postId }
+}
+
 export function loadPosts () {
     return function (dispatch) {
         return readableAPI.getAllPosts().then(posts => {
@@ -36,6 +40,16 @@ export function savePost (post) {
 
         return readableAPI.savePost(Object.assign(post, { id: helpers.guid(), timestamp: Date.now() })).then(savedPost => {
             dispatch(createPostSuccess(savedPost))
+        }).catch(error => {
+            throw (error)
+        })
+    }
+}
+
+export function deletePost (postId) {
+    return function (dispatch) {
+        return readableAPI.deletePost(postId).then(() => {
+            dispatch(deletePostSuccess(postId))
         }).catch(error => {
             throw (error)
         })

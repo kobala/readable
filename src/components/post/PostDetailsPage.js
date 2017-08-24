@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import DeletePostButton from './DeletePostButton'
 
 class ManagePostPage extends Component{
     state = {
@@ -26,7 +27,7 @@ class ManagePostPage extends Component{
                     <LinkContainer to={`/post/${post.id}/edit`}>
                         <Button bsStyle="default">Edit</Button>
                     </LinkContainer>&nbsp;
-                    <Button bsStyle="danger">Delete</Button>
+                    <DeletePostButton postId={post.id} redirectAfterSuccess={true}/>
                 </div>
             </div>
         )

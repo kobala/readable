@@ -60,7 +60,10 @@ export const editPost = (postId, postDetails) =>
 export const deletePost = (postId) =>
     fetch(`${api}/posts/${postId}`, {
         method: 'DELETE',
-        headers: headers
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        }
     })
 
 export const getCommentsByPostId = (postId) =>
