@@ -67,6 +67,7 @@ class PostList extends Component{
                             <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
                             <span>{helpers.formatDate(post.timestamp)}</span>
                             <p>{post.body}</p>
+                            <p>By: {post.author}</p>
                             <p>
                                 <LinkContainer to={`/post/${post.id}`}>
                                     <Button bsStyle="primary">Details</Button>
