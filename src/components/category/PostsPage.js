@@ -1,25 +1,14 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import PostList from '../post/PostList'
 
 class PostsPage extends Component{
     render() {
         return (
             <div>
-                <PostList posts={this.props.posts} />
+                <PostList category={this.props.match.params.category}/>
             </div>
         );
     }
-};
-
-function mapStateToProps (state, ownProps) {
-    let { posts } = state
-
-    posts = posts.filter(post => post.category === ownProps.match.params.category)
-
-    return {
-        posts
-    }
 }
 
-export default connect(mapStateToProps)(PostsPage)
+export default PostsPage

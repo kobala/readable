@@ -1,4 +1,8 @@
 export default {
     categories: [],
-    posts: []
+    posts: [],
+    postsFilter: {
+        sorting: '',
+        keyword: ''
+    }
 }

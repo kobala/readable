@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Nav, Navbar, FormGroup, FormControl, Button, NavItem } from 'react-bootstrap'
+import { Nav, Navbar, FormGroup, Button, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 const Header = ({ categories }) => (
@@ -28,9 +28,6 @@ const Header = ({ categories }) => (
                     <LinkContainer to="/post/create">
                         <Button>Add post</Button>
                     </LinkContainer>
-                </FormGroup>
-                <FormGroup>
-                    <FormControl type="text" placeholder="Search" />
                 </FormGroup>
             </Navbar.Form>
         </Navbar.Collapse>
