@@ -7,14 +7,14 @@ const PostsFilterPane = ({ selectedSorting, keyword, onSortingChange, onKeywordC
         <div className="form-inline">
             <SelectInput
                 name="Sort"
-                label="Sort"
+                label="Sort By "
                 value={selectedSorting}
                 onChange={onSortingChange}
+                defaultOption={{
+                    text: 'Date - Newest to Oldest',
+                    value: 'date_desc'
+                }}
                 options={[
-                    {
-                        text: 'Date - Newest to Oldest',
-                        value: 'date_desc'
-                    },
                     {
                         text: 'Date - Oldest to Newest',
                         value: 'date_asc'

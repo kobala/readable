@@ -13,7 +13,7 @@ function PostForm ({post, categories, onSubmit, onChange, loading, errors}) {
                 onChange={onChange}
                 error={errors.category}
                 options={categories}
-                defaultOption="Select Category"
+                defaultOption={{text: 'Select Category', value: ''}}
             />
             <TextInput
                 name="title"
