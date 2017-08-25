@@ -3,19 +3,16 @@ import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import DeletePostButton from './DeletePostButton'
+import PostVoteForm from './PostVoteForm'
 
 class ManagePostPage extends Component{
-    state = {
-        post: Object.assign({}, this.props.post)
-    }
-
     componentWillReceiveProps(nextProps){
         if(this.props.post.id !== nextProps.post.id)
             this.setState({post: Object.assign({}, nextProps.post)})
     }
 
     render() {
-        const { post } = this.state
+        const { post } = this.props
 
         return (
             <div>
@@ -23,6 +20,10 @@ class ManagePostPage extends Component{
                     <h1>{post.title}</h1>
                 </div>
                 <p className="lead">{post.body}</p>
+                <div>
+                    <PostVoteForm post={post} />
+                </div>
+                <br/>
                 <div>
                     <LinkContainer to={`/post/${post.id}/edit`}>
                         <Button bsStyle="default">Edit</Button>
