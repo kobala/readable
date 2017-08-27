@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux'
 import posts from './postReducer'
 import categories from './categoryReducer'
-import postsFilter from './filterReducer'
+import filter from './filterReducer'
+import postComments from './commentReducer'
 
 const rootReducer = combineReducers({
     posts,
     categories,
-    postsFilter
+    filter,
+    postComments
 })
 
 export default rootReducer

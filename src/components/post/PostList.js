@@ -2,68 +2,39 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Grid, Row, Col, Button } from 'react-bootstrap'
 import * as helpers from '../../utils/helpers'
-import escapeRegExp from 'escape-string-regexp'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import  { bindActionCreators } from 'redux'
 import * as filterActions from '../../actions/filterActions'
 import { LinkContainer } from 'react-router-bootstrap'
-import DeletePostButton from '../post/DeletePostButton'
-import PostsFilterPane from '../post/PostsFilterPane'
+import DeleteButton from '../common/DeleteButton'
+import FilterPane from '../common/FilterPane'
 import PostVoteForm from '../post/PostVoteForm'
 
 class PostList extends Component{
     handleSortingChange = (event) => {
-        this.props.filterActions.setSorting(event.target.value)
+        this.props.filterActions.setFilterSorting(event.target.value)
     }
 
     handleKeywordChange = (event) => {
-        this.props.filterActions.setKeyword(event.target.value)
-    }
-
-    getFilteredPosts = () => {
-        let posts = this.props.posts.filter(post => !post.deleted);
-
-        const { sorting, keyword } = this.props.postsFilter
-
-        switch(sorting){
-            case 'vote_desc' :
-                posts = posts.sort((a, b) => b.voteScore > a.voteScore)
-                break;
-            case 'vote_asc' :
-                posts = posts.sort((a, b) => b.voteScore < a.voteScore)
-                break;
-            case 'date_desc' :
-                posts = posts.sort((a, b) => b.timestamp > a.timestamp)
-                break;
-            case 'date_asc' :
-                posts = posts.sort((a, b) => b.timestamp < a.timestamp)
-                break;
-            default :
-                break;
-        }
-
-        if(keyword){
-            const match = new RegExp(escapeRegExp(keyword), 'i')
-
-            posts = posts.filter(post => match.test(post.title) || match.test(post.body) || match.test(post.author))
-        }
-
-        return posts
+        this.props.filterActions.setFilterKeyword(event.target.value)
     }
 
     render(){
-        const { sorting, keyword } = this.props.postsFilter
+        const posts = helpers.getFilteredList(this.props.posts, this.props.filter)
+
+        const { sorting, keyword } = this.props.filter
 
         return (
             <Grid>
                 <Row>
-                    <PostsFilterPane
+                    <FilterPane
                         selectedSorting={sorting}
                         onSortingChange={this.handleSortingChange}
                         keyword={keyword}
                         onKeywordChange={this.handleKeywordChange}
                     />
-                    {this.getFilteredPosts().map((post, key) => (
+                    {posts.map((post, key) => (
                         <Col xs={6} md={4} key={key}>
                             <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
                             <span>{helpers.formatDate(post.timestamp)}</span>
@@ -78,7 +49,10 @@ class PostList extends Component{
                                 <LinkContainer to={`/post/${post.id}/edit`}>
                                     <Button bsStyle="default">Edit</Button>
                                 </LinkContainer>&nbsp;
-                                <DeletePostButton postId={post.id}/>
+                                <DeleteButton
+                                    objectType="post"
+                                    itemId={post.id}
+                                />
                             </p>
                         </Col>
                     ))}
@@ -90,7 +64,7 @@ class PostList extends Component{
 
 
 function mapStateToProps (state, ownProps) {
-    let { posts, postsFilter } = state
+    let { posts, filter } = state
 
     if(ownProps.category){
         posts = posts.filter(post => post.category === ownProps.category)
@@ -98,14 +72,14 @@ function mapStateToProps (state, ownProps) {
 
     return {
         posts,
-        postsFilter
+        filter
     }
 }
 
 function mapDispatchToProps (dispatch) {
     return {
-        filterActions: bindActionCreators(filterActions, dispatch)
+        filterActions: bindActionCreators(filterActions, dispatch),
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostList)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostList))

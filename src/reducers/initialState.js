@@ -1,8 +1,9 @@
 export default {
     categories: [],
     posts: [],
-    postsFilter: {
+    filter: {
         sorting: 'date_desc',
         keyword: ''
-    }
+    },
+    postComments: []
 }

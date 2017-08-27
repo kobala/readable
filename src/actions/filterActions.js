@@ -1,21 +1,21 @@
 import * as types from './actionTypes'
 
-export function setPostsSortingSuccess(sortBy) {
-    return { type: types.SET_POSTS_SORTING_SUCCESS, sortBy }
+export function setFilterSortingSuccess(sortBy) {
+    return { type: types.SET_SORTING_SUCCESS, sortBy }
 }
 
-export function setPostsKeywordSuccess(keyword) {
-    return { type: types.SET_POSTS_KEYWORD_SUCCESS, keyword }
+export function setFilterKeywordSuccess(keyword) {
+    return { type: types.SET_KEYWORD_SUCCESS, keyword }
 }
 
-export function setSorting (sortBy) {
+export function setFilterSorting (sortBy) {
     return dispatch => {
-        dispatch(setPostsSortingSuccess(sortBy))
+        dispatch(setFilterSortingSuccess(sortBy))
     }
 }
 
-export function setKeyword (keyword) {
+export function setFilterKeyword (keyword) {
     return dispatch => {
-        dispatch(setPostsKeywordSuccess(keyword))
+        dispatch(setFilterKeywordSuccess(keyword))
     }
 }

@@ -78,7 +78,7 @@ export const saveComment = (comment) =>
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(comment)
-    })
+    }).then(res => res.json())
 
 export const getCommentById = (commentID) =>
     fetch(`${api}/comments/${commentID}`, { headers })
@@ -102,7 +102,7 @@ export const editComment = (commentId, commentDetails) =>
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(commentDetails)
-    })
+    }).then(res => res.json())
 
 export const deleteComment = (commentId) =>
     fetch(`${api}/comments/${commentId}`, {

@@ -2,7 +2,7 @@ import React from 'react'
 import { FormControl } from 'react-bootstrap'
 import SelectInput from '../common/SelectInput'
 
-const PostsFilterPane = ({ selectedSorting, keyword, onSortingChange, onKeywordChange  }) => (
+const FilterPane = ({ selectedSorting, keyword, onSortingChange, onKeywordChange  }) => (
     <div>
         <div className="form-inline">
             <SelectInput
@@ -35,4 +35,4 @@ const PostsFilterPane = ({ selectedSorting, keyword, onSortingChange, onKeywordC
     </div>
 )
 
-export default PostsFilterPane
+export default FilterPane

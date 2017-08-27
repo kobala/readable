@@ -2,23 +2,23 @@ import * as types from './actionTypes'
 import * as readableAPI from '../utils/readableAPI'
 import * as helpers from '../utils/helpers'
 
-export function loadPostsSuccess(posts) {
+export function loadPostsSuccess (posts) {
     return { type: types.LOAD_POSTS_SUCCESS, posts }
 }
 
-export function createPostSuccess(post) {
+export function createPostSuccess (post) {
     return { type: types.CREATE_POST_SUCCESS, post }
 }
 
-export function updatePostSuccess(post) {
+export function updatePostSuccess (post) {
     return { type: types.UPDATE_POST_SUCCESS, post }
 }
 
-export function deletePostSuccess(postId) {
+export function deletePostSuccess (postId) {
     return { type: types.DELETE_POST_SUCCESS, postId }
 }
 
-export function votePostSuccess(post) {
+export function votePostSuccess (post) {
     return { type: types.VOTE_POST_SUCCESS, post }
 }
 

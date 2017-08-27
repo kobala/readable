@@ -28,42 +28,44 @@ class ManagePostPage extends Component{
     }
 
     validateForm = () => {
-        let post = this.state.post;
-        let errors = {};
-        let formIsValid = true;
+        let { post } = this.state
+        let errors = {}
+        let formIsValid = true
 
         //category
         if(!post["category"]){
-            formIsValid = false;
-            errors["category"] = "Category is required";
+            formIsValid = false
+            errors["category"] = "Category is required"
         }
 
         //title
         if(!post["title"]){
-            formIsValid = false;
-            errors["title"] = "Title is required";
+            formIsValid = false
+            errors["title"] = "Title is required"
         }
 
         //body
         if(!post["body"]){
-            formIsValid = false;
-            errors["body"] = "Body is required";
+            formIsValid = false
+            errors["body"] = "Body is required"
         }
 
         //author
         if(!post["author"]){
-            formIsValid = false;
-            errors["author"] = "Body is required";
+            formIsValid = false
+            errors["author"] = "Body is required"
         }
 
-        this.setState({errors: errors});
-        return formIsValid;
+        this.setState({ errors })
+        return formIsValid
     }
 
     onSave = (event) => {
         event.preventDefault()
+
         if(this.validateForm()){
             this.props.actions.savePost(this.state.post)
+
             this.props.history.push("/")
         }
     }
@@ -83,12 +85,12 @@ class ManagePostPage extends Component{
 
 function getPostById (posts, postId) {
     const post = posts.filter(post => post.id === postId)
-    if (post) return post[0]
-    return null
+
+    return post ? post[0] : null
 }
 
 function mapStateToProps (state, ownProps) {
-    const postId = ownProps.match.params.id;
+    const postId = ownProps.match.params.id
 
     let post = { title: '', body: '', author: '', category: '' }
 
