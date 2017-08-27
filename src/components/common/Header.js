@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Nav, Navbar, FormGroup, Button, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import PropTypes from 'prop-types'
 
 const Header = ({ categories }) => (
     <Navbar>
@@ -33,5 +34,9 @@ const Header = ({ categories }) => (
         </Navbar.Collapse>
     </Navbar>
 )
+
+Header.propTypes = {
+    categories: PropTypes.array.isRequired
+}
 
 export default Header

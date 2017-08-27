@@ -5,6 +5,7 @@ import  { bindActionCreators } from 'redux'
 import * as postActions from '../../actions/postActions'
 import * as commentActions from '../../actions/commentActions'
 import { withRouter } from 'react-router'
+import PropTypes from 'prop-types'
 
 class DeleteButton extends Component{
     state = {
@@ -71,6 +72,17 @@ class DeleteButton extends Component{
             </span>
         )
     }
+}
+
+DeleteButton.propTypes = {
+    objectType: PropTypes.string.isRequired,
+    bsSize: PropTypes.string,
+    redirectAfterSuccess: PropTypes.bool,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            id: PropTypes.string
+        }).isRequired,
+    }).isRequired
 }
 
 function mapDispatchToProps (dispatch) {

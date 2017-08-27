@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormControl } from 'react-bootstrap'
 import SelectInput from '../common/SelectInput'
+import PropTypes from 'prop-types'
 
 const FilterPane = ({ selectedSorting, keyword, onSortingChange, onKeywordChange  }) => (
     <div>
@@ -34,5 +35,12 @@ const FilterPane = ({ selectedSorting, keyword, onSortingChange, onKeywordChange
         </div>
     </div>
 )
+
+FilterPane.propTypes = {
+    selectedSorting: PropTypes.string.isRequired,
+    keyword: PropTypes.string.isRequired,
+    onSortingChange: PropTypes.func.isRequired,
+    onKeywordChange: PropTypes.func.isRequired
+}
 
 export default FilterPane

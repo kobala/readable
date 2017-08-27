@@ -2,6 +2,7 @@ import React from 'react'
 import TextInput from '../common/TextInput'
 import SelectInput from '../common/SelectInput'
 import { Button } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 function PostForm ({post, categories, onSubmit, onChange, loading, errors}) {
     return (
@@ -44,6 +45,25 @@ function PostForm ({post, categories, onSubmit, onChange, loading, errors}) {
             </Button>
         </form>
     )
+}
+
+PostForm.propTypes = {
+    post: PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        body: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+    }).isRequired,
+    categories: PropTypes.array.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    loading: PropTypes.bool,
+    error: PropTypes.shape({
+        author: PropTypes.string,
+        body: PropTypes.string,
+        category: PropTypes.string,
+        title: PropTypes.string
+    })
 }
 
 export default PostForm

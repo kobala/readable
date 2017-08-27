@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 const SelectInput = ({name, label, onChange, defaultOption, value, error, options}) => {
     return (
@@ -23,6 +24,19 @@ const SelectInput = ({name, label, onChange, defaultOption, value, error, option
             { error && <HelpBlock>{error}</HelpBlock>}
         </FormGroup>
     )
+}
+
+SelectInput.propTypes = {
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    defaultOption: PropTypes.shape({
+        value: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired
+    }),
+    value: PropTypes.string.isRequired,
+    error: PropTypes.string,
+    options: PropTypes.array.isRequired,
 }
 
 export default SelectInput

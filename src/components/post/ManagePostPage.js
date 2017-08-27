@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import  { bindActionCreators } from 'redux'
 import PostForm from './PostForm'
 import * as postActions from '../../actions/postActions'
+import PropTypes from 'prop-types'
 
 class ManagePostPage extends Component{
     state = {
@@ -81,6 +82,16 @@ class ManagePostPage extends Component{
             />
         )
     }
+}
+
+ManagePostPage.propTypes = {
+    categories: PropTypes.array.isRequired,
+    post: PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        body: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+    }).isRequired
 }
 
 function getPostById (posts, postId) {

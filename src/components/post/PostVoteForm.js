@@ -3,6 +3,7 @@ import { Button, Glyphicon, Label } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import  { bindActionCreators } from 'redux'
 import * as postActions from '../../actions/postActions'
+import PropTypes from 'prop-types'
 
 class PostVoteForm extends Component {
     handleVotePost = (option) => {
@@ -20,6 +21,10 @@ class PostVoteForm extends Component {
             </div>
         )
     }
+}
+
+PostVoteForm.propTypes = {
+    post: PropTypes.object.isRequired
 }
 
 function mapDispatchToProps (dispatch) {

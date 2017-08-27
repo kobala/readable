@@ -8,9 +8,10 @@ import PostVoteForm from './PostVoteForm'
 import PostCommentList from './comment/PostCommentList'
 import PostCommentBox from './comment/PostCommentBox'
 import * as commentActions from '../../actions/commentActions'
+import PropTypes from 'prop-types'
 
 
-class ManagePostPage extends Component{
+class PostDetailsPage extends Component{
     state = {
         postComments: [],
         comment: { author: '', body: '' },
@@ -120,6 +121,16 @@ class ManagePostPage extends Component{
     }
 }
 
+PostDetailsPage.propTypes = {
+    post: PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        body: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+    }).isRequired,
+    postComments: PropTypes.array.isRequired
+}
+
 function getPostById (posts, postId) {
     const post = posts.filter(post => post.id === postId)
 
@@ -149,4 +160,4 @@ function mapDispatchToProps (dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManagePostPage)
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetailsPage)

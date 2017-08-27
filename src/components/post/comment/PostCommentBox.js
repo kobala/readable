@@ -2,6 +2,7 @@ import React from 'react'
 import TextInput from '../../common/TextInput'
 import TextareaInput from '../../common/TextareaInput'
 import { Button, Well } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
 function PostCommentBox ({comment, onSubmit, onChange, loading, errors}) {
     return (
@@ -31,6 +32,20 @@ function PostCommentBox ({comment, onSubmit, onChange, loading, errors}) {
             </form>
         </Well>
     )
+}
+
+PostCommentBox.propTypes = {
+    comment: PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        body: PropTypes.string.isRequired
+    }).isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    loading: PropTypes.bool,
+    errors: PropTypes.shape({
+        author: PropTypes.string,
+        body: PropTypes.string
+    }),
 }
 
 export default PostCommentBox

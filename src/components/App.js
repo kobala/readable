@@ -10,6 +10,7 @@ import PostDetailsPage from './post/PostDetailsPage'
 import PostsPage from './category/PostsPage'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import PropTypes from 'prop-types'
 
 
 class App extends Component {
@@ -32,6 +33,10 @@ class App extends Component {
         </div>
     )
   }
+}
+
+App.propTypes = {
+    categories: PropTypes.array.isRequired,
 }
 
 function mapStateToProps (state) {

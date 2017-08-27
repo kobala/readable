@@ -8,6 +8,7 @@ import  { bindActionCreators } from 'redux'
 import * as filterActions from '../../../actions/filterActions'
 import * as helpers from '../../../utils/helpers'
 import '../../../styles/postCommentList.css'
+import PropTypes from 'prop-types'
 
 class PostCommentList extends Component {
     handleSortingChange = (event) => {
@@ -81,6 +82,11 @@ class PostCommentList extends Component {
             </div>
         )
     }
+}
+
+PostCommentList.propTypes = {
+    comments: PropTypes.array.isRequired,
+    onCommentEdit: PropTypes.func.isRequired
 }
 
 function mapStateToProps (state) {

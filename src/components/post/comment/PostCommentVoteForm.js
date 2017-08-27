@@ -3,6 +3,7 @@ import { Button, Glyphicon } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import  { bindActionCreators } from 'redux'
 import * as commentActions from '../../../actions/commentActions'
+import PropTypes from 'prop-types'
 
 class PostCommentVoteForm extends Component {
     handleVotePostComment = (option) => {
@@ -27,6 +28,12 @@ class PostCommentVoteForm extends Component {
         )
 
     }
+}
+
+PostCommentVoteForm.propTypes = {
+    comment: PropTypes.shape({
+        voteScore: PropTypes.number.isRequired
+    }).isRequired
 }
 
 function mapDispatchToProps (dispatch) {

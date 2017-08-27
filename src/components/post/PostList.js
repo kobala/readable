@@ -10,6 +10,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import DeleteButton from '../common/DeleteButton'
 import FilterPane from '../common/FilterPane'
 import PostVoteForm from '../post/PostVoteForm'
+import PropTypes from 'prop-types'
 
 class PostList extends Component{
     handleSortingChange = (event) => {
@@ -62,6 +63,10 @@ class PostList extends Component{
     }
 }
 
+PostList.propTypes = {
+    filter: PropTypes.object.isRequired,
+    posts: PropTypes.array.isRequired,
+}
 
 function mapStateToProps (state, ownProps) {
     let { posts, filter } = state
