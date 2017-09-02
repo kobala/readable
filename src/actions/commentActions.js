@@ -1,6 +1,7 @@
 import * as types from './actionTypes'
 import * as readableAPI from '../utils/readableAPI'
 import * as helpers from '../utils/helpers'
+import { beginAjaxCall } from './ajaxStatusActions'
 
 export function loadPostCommentsSuccess (comments) {
     return { type: types.LOAD_POST_COMMENTS_SUCCESS, comments }
@@ -24,6 +25,7 @@ export function votePostCommentSuccess (comment) {
 
 export function loadPostComments (postId) {
     return function (dispatch) {
+        dispatch(beginAjaxCall())
         return readableAPI.getCommentsByPostId(postId).then(comments => {
             dispatch(loadPostCommentsSuccess(comments))
         }).catch(error => {
@@ -34,6 +36,7 @@ export function loadPostComments (postId) {
 
 export function savePostComment (parentId, comment) {
     return function (dispatch) {
+        dispatch(beginAjaxCall())
         if(comment.id){
             return readableAPI.editComment(comment.id, comment).then(savedComment => {
                 dispatch(updatePostCommentSuccess(savedComment))
@@ -52,6 +55,7 @@ export function savePostComment (parentId, comment) {
 
 export function deletePostComment (commentId, option) {
     return function (dispatch) {
+        dispatch(beginAjaxCall())
         return readableAPI.deleteComment(commentId).then(() => {
             dispatch(deletePostCommentSuccess(commentId))
         }).catch(error => {

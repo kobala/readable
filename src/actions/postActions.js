@@ -1,6 +1,7 @@
 import * as types from './actionTypes'
 import * as readableAPI from '../utils/readableAPI'
 import * as helpers from '../utils/helpers'
+import { beginAjaxCall } from './ajaxStatusActions'
 
 export function loadPostsSuccess (posts) {
     return { type: types.LOAD_POSTS_SUCCESS, posts }
@@ -24,6 +25,7 @@ export function votePostSuccess (post) {
 
 export function loadPosts () {
     return function (dispatch) {
+        dispatch(beginAjaxCall())
         return readableAPI.getAllPosts().then(posts => {
             dispatch(loadPostsSuccess(posts))
         }).catch(error => {
@@ -34,6 +36,7 @@ export function loadPosts () {
 
 export function savePost (post) {
     return function (dispatch) {
+        dispatch(beginAjaxCall())
         if(post.id){
             return readableAPI.editPost(post.id, post).then(savedPost => {
                 dispatch(updatePostSuccess(savedPost))
@@ -52,6 +55,7 @@ export function savePost (post) {
 
 export function deletePost (postId) {
     return function (dispatch) {
+        dispatch(beginAjaxCall())
         return readableAPI.deletePost(postId).then(() => {
             dispatch(deletePostSuccess(postId))
         }).catch(error => {

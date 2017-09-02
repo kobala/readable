@@ -11,6 +11,10 @@ import '../../../styles/postCommentList.css'
 import PropTypes from 'prop-types'
 
 class PostCommentList extends Component {
+    componentWillMount(){
+        this.props.filterActions.resetFilter()
+    }
+
     handleSortingChange = (event) => {
         this.props.filterActions.setFilterSorting(event.target.value)
     }
@@ -77,6 +81,7 @@ class PostCommentList extends Component {
                                 </Row>
                             </ListGroupItem>
                         ))}
+                        {(this.props.loading && !comments) && <div className="comments-loading">Loading</div>}
                     </ListGroup>
                 </Panel>
             </div>

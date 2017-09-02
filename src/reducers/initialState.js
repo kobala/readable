@@ -5,5 +5,9 @@ export default {
         sorting: 'date_desc',
         keyword: ''
     },
-    postComments: []
+    postComments: [],
+    ajaxCallsInProgress: {
+        posts: false,
+        comments: false
+    }
 }

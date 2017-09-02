@@ -65,10 +65,12 @@ class ManagePostPage extends Component{
         event.preventDefault()
 
         if(this.validateForm()){
-            this.props.actions.savePost(this.state.post)
-
-            this.props.history.push("/")
+            this.props.actions.savePost(this.state.post).then(() => this.redirect())
         }
+    }
+
+    redirect = () => {
+        this.props.history.push("/")
     }
 
     render() {

@@ -13,6 +13,10 @@ import PostVoteForm from '../post/PostVoteForm'
 import PropTypes from 'prop-types'
 
 class PostList extends Component{
+    componentWillMount() {
+        this.props.filterActions.resetFilter()
+    }
+
     handleSortingChange = (event) => {
         this.props.filterActions.setFilterSorting(event.target.value)
     }

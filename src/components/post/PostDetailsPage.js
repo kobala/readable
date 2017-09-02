@@ -19,13 +19,10 @@ class PostDetailsPage extends Component{
     }
 
     componentDidMount () {
-        this.props.commentActions.loadPostComments(this.props.match.params.id)
-    }
-
-    componentWillReceiveProps (nextProps) {
-        const { postComments } = nextProps
-
-        this.setState({ postComments })
+        this.props.commentActions.loadPostComments(this.props.match.params.id).then(() => {
+            const { postComments } = this.props
+            this.setState({ postComments })
+        })
     }
 
     handleInputChange = (event) => {
@@ -76,7 +73,7 @@ class PostDetailsPage extends Component{
         return formIsValid
     }
 
-    render() {
+    render () {
         const { post } = this.props
 
         const { postComments } = this.state
@@ -114,6 +111,7 @@ class PostDetailsPage extends Component{
                     <PostCommentList
                         comments={postComments}
                         onCommentEdit={this.onCommentEdit}
+                        loading={this.props.loading}
                     />
                 </div>
             </div>
@@ -140,7 +138,7 @@ function getPostById (posts, postId) {
 function mapStateToProps (state, ownProps) {
     const postId = ownProps.match.params.id;
 
-    const { postComments } = state
+    const { postComments, ajaxCallsInProgress } = state
 
     let post = { title: '', body: '', author: '', category: '' }
 
@@ -150,7 +148,8 @@ function mapStateToProps (state, ownProps) {
 
     return {
         post,
-        postComments
+        postComments,
+        loading: ajaxCallsInProgress
     }
 }
 

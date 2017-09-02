@@ -18,7 +18,7 @@ class App extends Component {
     return (
         <div id="app">
           <div id="wrap">
-            <Header categories={this.props.categories}/>
+            <Header categories={this.props.categories} loading={this.props.loading}/>
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={DefaultPage} />
@@ -48,7 +48,8 @@ function mapStateToProps (state) {
     })
 
     return {
-        categories
+        categories,
+        loading: state.ajaxCallsInProgress
     }
 }
 

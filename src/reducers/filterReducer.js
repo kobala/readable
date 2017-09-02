@@ -13,6 +13,8 @@ export default function filterReducer (state = initialState.filter, action) {
                 ...state,
                 keyword: action.keyword
             }
+        case types.RESET_FILTER :
+            return initialState.filter
         default :
             return state
     }
