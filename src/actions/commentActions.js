@@ -3,16 +3,16 @@ import * as readableAPI from '../utils/readableAPI'
 import * as helpers from '../utils/helpers'
 import { beginAjaxCall } from './ajaxStatusActions'
 
-export function loadPostCommentsSuccess (comments) {
-    return { type: types.LOAD_POST_COMMENTS_SUCCESS, comments }
+export function loadPostCommentsSuccess (parentId, comments) {
+    return { type: types.LOAD_POST_COMMENTS_SUCCESS, parentId, comments }
 }
 
-export function addPostCommentSuccess (comment) {
-    return { type: types.ADD_POST_COMMENT_SUCCESS, comment }
+export function addPostCommentSuccess (parentId, comment) {
+    return { type: types.ADD_POST_COMMENT_SUCCESS, parentId, comment }
 }
 
-export function updatePostCommentSuccess (comment) {
-    return { type: types.UPDATE_POST_COMMENT_SUCCESS, comment }
+export function updatePostCommentSuccess (parentId, comment) {
+    return { type: types.UPDATE_POST_COMMENT_SUCCESS, parentId, comment }
 }
 
 export function deletePostCommentSuccess (commentId) {
@@ -23,12 +23,12 @@ export function votePostCommentSuccess (comment) {
     return { type: types.VOTE_POST_COMMENT_SUCCESS, comment }
 }
 
-export function loadPostComments (postId) {
+export function loadPostComments (parentId) {
     return dispatch => {
         dispatch(beginAjaxCall())
 
-        return readableAPI.getCommentsByPostId(postId).then(comments => {
-            dispatch(loadPostCommentsSuccess(comments))
+        return readableAPI.getCommentsByPostId(parentId).then(comments => {
+            dispatch(loadPostCommentsSuccess(parentId, comments))
         }).catch(error => {
             throw (error)
         })
@@ -41,21 +41,21 @@ export function savePostComment (parentId, comment) {
 
         if(comment.id){
             return readableAPI.editComment(comment.id, comment).then(savedComment => {
-                dispatch(updatePostCommentSuccess(savedComment))
+                dispatch(updatePostCommentSuccess(parentId, savedComment))
             }).catch(error => {
                 throw (error)
             })
         }
 
         return readableAPI.saveComment(Object.assign(comment, { id: helpers.guid(), timestamp: Date.now(), parentId })).then(savedComment => {
-            dispatch(addPostCommentSuccess(savedComment))
+            dispatch(addPostCommentSuccess(parentId, savedComment))
         }).catch(error => {
             throw (error)
         })
     }
 }
 
-export function deletePostComment (commentId, option) {
+export function deletePostComment (commentId) {
     return dispatch => {
         dispatch(beginAjaxCall())
 

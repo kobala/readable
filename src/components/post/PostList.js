@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Grid, Row, Col, Button } from 'react-bootstrap'
+import { Grid, Row } from 'react-bootstrap'
 import * as helpers from '../../utils/helpers'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import  { bindActionCreators } from 'redux'
 import * as filterActions from '../../actions/filterActions'
-import { LinkContainer } from 'react-router-bootstrap'
-import DeleteButton from '../common/DeleteButton'
 import FilterPane from '../common/FilterPane'
-import PostVoteForm from '../post/PostVoteForm'
+import PostInList from './PostInList'
 import PropTypes from 'prop-types'
 
 class PostList extends Component{
@@ -40,26 +37,7 @@ class PostList extends Component{
                         onKeywordChange={this.handleKeywordChange}
                     />
                     {posts.map((post, key) => (
-                        <Col xs={6} md={4} key={key}>
-                            <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
-                            <span>{helpers.formatDate(post.timestamp)}</span>
-                            <p>{post.body}</p>
-                            <p>By: {post.author}</p>
-                            <PostVoteForm post={post} />
-                            <hr />
-                            <p>
-                                <LinkContainer to={`/post/${post.id}`}>
-                                    <Button bsStyle="primary">Details</Button>
-                                </LinkContainer>&nbsp;
-                                <LinkContainer to={`/post/${post.id}/edit`}>
-                                    <Button bsStyle="default">Edit</Button>
-                                </LinkContainer>&nbsp;
-                                <DeleteButton
-                                    objectType="post"
-                                    itemId={post.id}
-                                />
-                            </p>
-                        </Col>
+                        <PostInList post={post} key={key} />
                     ))}
                 </Row>
             </Grid>

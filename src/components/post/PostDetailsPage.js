@@ -19,10 +19,13 @@ class PostDetailsPage extends Component{
     }
 
     componentDidMount () {
-        this.props.commentActions.loadPostComments(this.props.match.params.id).then(() => {
-            const { postComments } = this.props
-            this.setState({ postComments })
-        })
+        this.props.commentActions.loadPostComments(this.props.match.params.id)
+    }
+
+    componentWillReceiveProps (nextProps) {
+        const { postComments } = nextProps
+
+        this.setState({ postComments })
     }
 
     handleInputChange = (e) => {
@@ -138,7 +141,11 @@ function getPostById (posts, postId) {
 function mapStateToProps (state, ownProps) {
     const postId = ownProps.match.params.id
 
-    const { postComments, ajaxCallsInProgress } = state
+    const { ajaxCallsInProgress } = state
+
+    const postComments = state.postComments[postId] ?
+        state.postComments[postId].filter(comment => comment.parentId === postId && comment.deleted === false)
+        : []
 
     let post = { title: '', body: '', author: '', category: '' }
 
