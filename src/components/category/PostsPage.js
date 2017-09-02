@@ -3,12 +3,16 @@ import PostList from '../post/PostList'
 import PropTypes from 'prop-types'
 
 class PostsPage extends Component{
-    render() {
+    render () {
+        const { category } = this.props.match.params
+
         return (
             <div>
-                <PostList category={this.props.match.params.category}/>
+                <h4>Category: {category.charAt(0).toUpperCase() + category.slice(1)}</h4>
+                <hr />
+                <PostList category={category}/>
             </div>
-        );
+        )
     }
 }
 

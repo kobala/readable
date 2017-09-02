@@ -24,8 +24,9 @@ export function votePostCommentSuccess (comment) {
 }
 
 export function loadPostComments (postId) {
-    return function (dispatch) {
+    return dispatch => {
         dispatch(beginAjaxCall())
+
         return readableAPI.getCommentsByPostId(postId).then(comments => {
             dispatch(loadPostCommentsSuccess(comments))
         }).catch(error => {
@@ -35,8 +36,9 @@ export function loadPostComments (postId) {
 }
 
 export function savePostComment (parentId, comment) {
-    return function (dispatch) {
+    return dispatch => {
         dispatch(beginAjaxCall())
+
         if(comment.id){
             return readableAPI.editComment(comment.id, comment).then(savedComment => {
                 dispatch(updatePostCommentSuccess(savedComment))
@@ -54,8 +56,9 @@ export function savePostComment (parentId, comment) {
 }
 
 export function deletePostComment (commentId, option) {
-    return function (dispatch) {
+    return dispatch => {
         dispatch(beginAjaxCall())
+
         return readableAPI.deleteComment(commentId).then(() => {
             dispatch(deletePostCommentSuccess(commentId))
         }).catch(error => {
@@ -65,7 +68,7 @@ export function deletePostComment (commentId, option) {
 }
 
 export function votePostComment (commentId, option) {
-    return function (dispatch) {
+    return dispatch => {
         return readableAPI.voteComment(commentId, option).then((comment) => {
             dispatch(votePostCommentSuccess(comment))
         }).catch(error => {

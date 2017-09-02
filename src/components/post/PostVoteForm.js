@@ -10,7 +10,7 @@ class PostVoteForm extends Component {
         this.props.postActions.votePost(this.props.post.id, option)
     }
 
-    render(){
+    render () {
         const { post } = this.props
 
         return(

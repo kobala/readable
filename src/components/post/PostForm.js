@@ -4,7 +4,7 @@ import SelectInput from '../common/SelectInput'
 import { Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
-function PostForm ({post, categories, onSubmit, onChange, loading, errors}) {
+function PostForm ({ post, categories, onSubmit, onChange, loading, errors }) {
     return (
         <form onSubmit={onSubmit}>
             <SelectInput

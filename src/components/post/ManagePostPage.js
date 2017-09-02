@@ -11,7 +11,7 @@ class ManagePostPage extends Component{
         errors: {}
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps (nextProps){
         if(this.props.post.id !== nextProps.post.id)
             this.setState({post: Object.assign({}, nextProps.post)})
     }
@@ -61,8 +61,8 @@ class ManagePostPage extends Component{
         return formIsValid
     }
 
-    onSave = (event) => {
-        event.preventDefault()
+    onSave = (e) => {
+        e.preventDefault()
 
         if(this.validateForm()){
             this.props.actions.savePost(this.state.post).then(() => this.redirect())

@@ -25,10 +25,10 @@ class PostDetailsPage extends Component{
         })
     }
 
-    handleInputChange = (event) => {
+    handleInputChange = (e) => {
         let { comment } = this.state
 
-        comment[event.target.name] = event.target.value
+        comment[e.target.name] = e.target.value
 
         if(Object.keys(this.state.commentErrors).length > 0){
             this.validateForm()
@@ -37,8 +37,8 @@ class PostDetailsPage extends Component{
         this.setState({ comment })
     }
 
-    onCommentSubmit = (event) => {
-        event.preventDefault()
+    onCommentSubmit = (e) => {
+        e.preventDefault()
 
         if(this.validateForm()){
             this.props.commentActions.savePostComment(this.props.post.id, this.state.comment)
@@ -136,7 +136,7 @@ function getPostById (posts, postId) {
 }
 
 function mapStateToProps (state, ownProps) {
-    const postId = ownProps.match.params.id;
+    const postId = ownProps.match.params.id
 
     const { postComments, ajaxCallsInProgress } = state
 

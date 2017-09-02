@@ -11,19 +11,19 @@ import '../../../styles/postCommentList.css'
 import PropTypes from 'prop-types'
 
 class PostCommentList extends Component {
-    componentWillMount(){
+    componentWillMount (){
         this.props.filterActions.resetFilter()
     }
 
-    handleSortingChange = (event) => {
-        this.props.filterActions.setFilterSorting(event.target.value)
+    handleSortingChange = (e) => {
+        this.props.filterActions.setFilterSorting(e.target.value)
     }
 
-    handleKeywordChange = (event) => {
-        this.props.filterActions.setFilterKeyword(event.target.value)
+    handleKeywordChange = (e) => {
+        this.props.filterActions.setFilterKeyword(e.target.value)
     }
 
-    render(){
+    render (){
         const comments = helpers.getFilteredList(this.props.comments, this.props.filter)
 
         const { sorting, keyword } = this.props.filter

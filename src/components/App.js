@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
 
 
 class App extends Component {
-  render() {
+  render () {
     return (
         <div id="app">
           <div id="wrap">

@@ -9,6 +9,7 @@ export function loadCategoriesSuccess (categories) {
 export function loadCategories () {
     return dispatch => {
         dispatch(beginAjaxCall())
+
         return readableApi.getAllCategories().then(categories => {
             dispatch(loadCategoriesSuccess(categories))
         }).catch(error => {

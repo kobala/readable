@@ -4,7 +4,7 @@ import TextareaInput from '../../common/TextareaInput'
 import { Button, Well } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
-function PostCommentBox ({comment, onSubmit, onChange, loading, errors}) {
+function PostCommentBox ({ comment, onSubmit, onChange, loading, errors }) {
     return (
         <Well>
             <legend className="the-legend">Comment</legend>

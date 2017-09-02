@@ -2,7 +2,7 @@ import React from 'react'
 import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
-const SelectInput = ({name, label, onChange, defaultOption, value, error, options}) => {
+function SelectInput ({ name, label, onChange, defaultOption, value, error, options }) {
     return (
         <FormGroup
             controlId={name}

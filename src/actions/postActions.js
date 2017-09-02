@@ -24,8 +24,9 @@ export function votePostSuccess (post) {
 }
 
 export function loadPosts () {
-    return function (dispatch) {
+    return dispatch => {
         dispatch(beginAjaxCall())
+
         return readableAPI.getAllPosts().then(posts => {
             dispatch(loadPostsSuccess(posts))
         }).catch(error => {
@@ -35,8 +36,9 @@ export function loadPosts () {
 }
 
 export function savePost (post) {
-    return function (dispatch) {
+    return dispatch => {
         dispatch(beginAjaxCall())
+
         if(post.id){
             return readableAPI.editPost(post.id, post).then(savedPost => {
                 dispatch(updatePostSuccess(savedPost))
@@ -54,8 +56,9 @@ export function savePost (post) {
 }
 
 export function deletePost (postId) {
-    return function (dispatch) {
+    return dispatch => {
         dispatch(beginAjaxCall())
+
         return readableAPI.deletePost(postId).then(() => {
             dispatch(deletePostSuccess(postId))
         }).catch(error => {
@@ -65,7 +68,7 @@ export function deletePost (postId) {
 }
 
 export function votePost (postId, option) {
-    return function (dispatch) {
+    return dispatch => {
         return readableAPI.votePost(postId, option).then((post) => {
             dispatch(votePostSuccess(post))
         }).catch(error => {
