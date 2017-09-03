@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../styles/App.css'
 import Header from './common/Header'
 import Footer from './common/Footer'
+import PageNotFound from './common/PageNotFound'
 import '../styles/bootstrap/css/bootstrap.css'
 import { Switch, Route } from 'react-router-dom'
 import DefaultPage from './default/DefaultPage'
@@ -26,6 +27,7 @@ class App extends Component {
                   <Route exact path="/:category/:id/edit" component={ManagePostPage} />
                   <Route exact path="/:category/:id" component={PostDetailsPage} />
                   <Route exact path="/:category" component={PostsPage}/>
+                  <Route component={PageNotFound}/>
                 </Switch>
               </div>
           </div>
