@@ -13,7 +13,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 
-
 class App extends Component {
   render () {
     return (

@@ -1,5 +1,6 @@
 import React from 'react'
 import TextInput from '../common/TextInput'
+import Textarea from '../common/TextareaInput'
 import SelectInput from '../common/SelectInput'
 import { Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
@@ -23,7 +24,7 @@ function PostForm ({ post, categories, onSubmit, onChange, loading, errors }) {
                 onChange={onChange}
                 error={errors.title}
             />
-            <TextInput
+            <Textarea
                 name="body"
                 label="Body"
                 value={post.body}
