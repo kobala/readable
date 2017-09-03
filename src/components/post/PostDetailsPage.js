@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Button } from 'react-bootstrap'
+import { Button, Label, Glyphicon } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import DeleteButton from '../common/DeleteButton'
 import PostVoteForm from './PostVoteForm'
 import PostCommentList from './comment/PostCommentList'
 import PostCommentBox from './comment/PostCommentBox'
 import * as commentActions from '../../actions/commentActions'
+import * as helpers from '../../utils/helpers'
 import PropTypes from 'prop-types'
 
 
@@ -85,6 +86,13 @@ class PostDetailsPage extends Component{
             <div>
                 <div className="page-header">
                     <h1>{post.title}</h1>
+                    {post &&
+                        <div>
+                            <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
+                            <Label bsStyle="primary"><Glyphicon glyph="user" /> {post.author} </Label>&nbsp;
+                            <Label bsStyle="info"><Glyphicon glyph="time" /> {helpers.formatDate(post.timestamp)} </Label>&nbsp;
+                        </div>
+                    }
                 </div>
                 <p className="lead">{post.body}</p>
                 <div>
