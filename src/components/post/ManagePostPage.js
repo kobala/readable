@@ -5,6 +5,7 @@ import PostForm from './PostForm'
 import * as postActions from '../../actions/postActions'
 import PropTypes from 'prop-types'
 import DocumentTitle from 'react-document-title'
+import PageNotFound from '../common/PageNotFound'
 
 class ManagePostPage extends Component{
     state = {
@@ -77,13 +78,17 @@ class ManagePostPage extends Component{
     render() {
         return (
             <DocumentTitle title={`${this.props.match.params.id ? 'Edit' : 'Add new'} post`}>
-                <PostForm
-                    post={this.state.post}
-                    categories={this.props.categories}
-                    onChange={this.handleChange}
-                    onSubmit={this.onSave}
-                    errors={this.state.errors}
-                />
+                {this.props.match.params.id && !this.props.post.id ?
+                    <PageNotFound />
+                    :
+                    <PostForm
+                        post={this.state.post}
+                        categories={this.props.categories}
+                        onChange={this.handleChange}
+                        onSubmit={this.onSave}
+                        errors={this.state.errors}
+                    />
+                }
             </DocumentTitle>
         )
     }
@@ -92,17 +97,17 @@ class ManagePostPage extends Component{
 ManagePostPage.propTypes = {
     categories: PropTypes.array.isRequired,
     post: PropTypes.shape({
-        author: PropTypes.string.isRequired,
-        body: PropTypes.string.isRequired,
-        category: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
-    }).isRequired
+        author: PropTypes.string,
+        body: PropTypes.string,
+        category: PropTypes.string,
+        title: PropTypes.string
+    })
 }
 
 function getPostById (posts, postId) {
     const post = posts.filter(post => post.id === postId)
 
-    return post ? post[0] : null
+    return post[0] || {}
 }
 
 function mapStateToProps (state, ownProps) {
