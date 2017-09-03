@@ -85,12 +85,12 @@ class PostDetailsPage extends Component{
         return (
             <div>
                 <div className="page-header">
-                    <h1>{post.title}</h1>
-                    {post &&
+                    {post.title &&
                         <div>
-                            <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
-                            <Label bsStyle="primary"><Glyphicon glyph="user" /> {post.author} </Label>&nbsp;
-                            <Label bsStyle="info"><Glyphicon glyph="time" /> {helpers.formatDate(post.timestamp)} </Label>&nbsp;
+                            <h1>{post.title}</h1>
+                                <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
+                                <Label bsStyle="primary"><Glyphicon glyph="user" /> {post.author} </Label>&nbsp;
+                                <Label bsStyle="info"><Glyphicon glyph="time" /> {helpers.formatDate(post.timestamp)} </Label>&nbsp;
                         </div>
                     }
                 </div>

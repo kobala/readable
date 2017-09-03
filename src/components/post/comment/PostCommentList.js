@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Panel, Glyphicon, ListGroup, ListGroupItem, Row, Col, Button } from 'react-bootstrap'
+import { Panel, Glyphicon, ListGroup, ListGroupItem, Row, Col, Button, Label } from 'react-bootstrap'
 import PostCommentVoteForm from './PostCommentVoteForm'
 import DeleteButton from '../../common/DeleteButton'
 import FilterPane from '../../common/FilterPane'
@@ -34,7 +34,7 @@ class PostCommentList extends Component {
                 <h3 className="panel-title">
                     Comments
                 </h3>
-                {comments.length > 0 && <span className="label label-info"> {comments.length} </span>}
+                {comments.length > 0 && <Label bsStyle="info"> {comments.length} </Label>}
             </div>
         )
 
@@ -62,10 +62,8 @@ class PostCommentList extends Component {
                                         <div className="comment-text">
                                             {comment.body}
                                         </div>
-                                        <div>
-                                            <div className="mic-info">
-                                                By: <b>{comment.author}</b> on {helpers.formatDate(comment.timestamp)}
-                                            </div>
+                                        <div className="mic-info">
+                                            By: <b>{comment.author}</b> on {helpers.formatDate(comment.timestamp)}
                                         </div>
                                         <div className="action">
                                             <Button bsSize="xs" bsStyle="primary" onClick={() => this.props.onCommentEdit(comment)}>

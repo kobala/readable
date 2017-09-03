@@ -1,41 +1,43 @@
 .widget .panel-body {
-    padding:0px;
+    padding:0px
 }
 .widget .list-group {
-    margin-bottom: 0;
+    margin-bottom: 0
 }
 .widget .panel-title {
     display:inline
 }
 .widget .label-info {
-    float: right;
+    float: right
 }
 .widget li.list-group-item {
     border-radius: 0;
     border: 0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #ddd
 }
 .widget li.list-group-item:hover {
-    background-color: rgba(86,61,124,.1);
+    background-color: rgba(86,61,124,.1)
 }
 .widget .mic-info {
-    color: #666666;font-size: 11px;
+    color: #666666;
+    font-size: 11px;
+    margin: 9px 0px
 }
 .widget .action {
-    margin-top:5px;
+    margin-top:5px
 }
 .widget .comment-text {
-    font-size: 12px;
+    font-size: 12px
 }
 .widget .btn-block {
     border-top-left-radius:0px;
-    border-top-right-radius:0px;
+    border-top-right-radius:0px
 }
 .comment-score-vote {
-    text-align: center;
+    text-align: center
 }
 .comment-score-vote .score-vote {
-    font-weight: bold;
+    font-weight: bold
 }
 .comment-score-vote .score-vote.up {
     color: #5cb85c
@@ -47,6 +49,6 @@
     margin-bottom: 10px;
     text-align: right
 }
-.comments-loading{
+.comments-loading {
     text-align: center
 }
