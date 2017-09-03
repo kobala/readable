@@ -85,7 +85,7 @@ class PostDetailsPage extends Component{
         return (
             <div>
                 <div className="page-header">
-                    {post.title &&
+                    {post &&
                         <div>
                             <h1>{post.title}</h1>
                                 <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
@@ -100,7 +100,7 @@ class PostDetailsPage extends Component{
                 </div>
                 <br/>
                 <div>
-                    <LinkContainer to={`/post/${post.id}/edit`}>
+                    <LinkContainer to={`/${post.category}/${post.id}/edit`}>
                         <Button bsStyle="default">Edit</Button>
                     </LinkContainer>&nbsp;
                     <DeleteButton

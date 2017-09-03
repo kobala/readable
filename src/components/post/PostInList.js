@@ -22,7 +22,7 @@ class PostInList extends Component {
             <Col xs={6} md={4} className="post-list-item">
                 <div className="thumbnail">
                     <div className="caption">
-                        <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
+                        <h3><Link to={`/${post.category}/${post.id}`}>{post.title}</Link></h3>
                         <p>{post.body}</p>
                         <p>
                             <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
@@ -35,10 +35,10 @@ class PostInList extends Component {
                         <PostVoteForm post={post} />
                         <br />
                         <p>
-                            <LinkContainer to={`/post/${post.id}`}>
+                            <LinkContainer to={`/${post.category}/${post.id}`}>
                                 <Button bsStyle="primary">Details</Button>
                             </LinkContainer>&nbsp;
-                            <LinkContainer to={`/post/${post.id}/edit`}>
+                            <LinkContainer to={`/${post.category}/${post.id}/edit`}>
                                 <Button bsStyle="default">Edit</Button>
                             </LinkContainer>&nbsp;
                             <DeleteButton

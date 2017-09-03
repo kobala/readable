@@ -22,10 +22,10 @@ class App extends Component {
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={DefaultPage} />
-                  <Route exact path="/post/create" component={ManagePostPage} />
-                  <Route exact path="/post/:id" component={PostDetailsPage} />
-                  <Route exact path="/post/:id/edit" component={ManagePostPage} />
-                  <Route exact path="/posts/:category" component={PostsPage}/>
+                  <Route exact path="/create" component={ManagePostPage} />
+                  <Route exact path="/:category/:id/edit" component={ManagePostPage} />
+                  <Route exact path="/:category/:id" component={PostDetailsPage} />
+                  <Route exact path="/:category" component={PostsPage}/>
                 </Switch>
               </div>
           </div>

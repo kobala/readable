@@ -22,7 +22,7 @@ function Header ({ categories, loading }) {
                             <NavItem eventKey={0}>Home</NavItem>
                         </LinkContainer>
                         {categories.map((category, key) => (
-                                <LinkContainer to={`/posts/${category.path}`} key={key}>
+                                <LinkContainer to={`/${category.path}`} key={key}>
                                     <NavItem eventKey={++key}>{category.text}</NavItem>
                                 </LinkContainer>
                             )
@@ -30,7 +30,7 @@ function Header ({ categories, loading }) {
                     </Nav>
                     <Navbar.Form pullRight>
                         <FormGroup>
-                            <LinkContainer to="/post/create">
+                            <LinkContainer to="/create">
                                 <Button bsStyle="success">Add post</Button>
                             </LinkContainer>
                         </FormGroup>
