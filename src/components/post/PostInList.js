@@ -23,29 +23,31 @@ class PostInList extends Component {
                 <div className="thumbnail">
                     <div className="caption">
                         <h3><Link to={`/${post.category}/${post.id}`}>{post.title}</Link></h3>
-                        <p>{post.body}</p>
-                        <p>
-                            <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
-                            <Label bsStyle="success"><Glyphicon glyph="comment" /> {postComments.length} </Label>
-                        </p>
-                        <p>
-                            <Label bsStyle="primary"><Glyphicon glyph="user" /> {post.author} </Label>&nbsp;
-                            <Label bsStyle="info"><Glyphicon glyph="time" /> {helpers.formatDate(post.timestamp)} </Label>
-                        </p>
-                        <PostVoteForm post={post} />
-                        <br />
-                        <p>
-                            <LinkContainer to={`/${post.category}/${post.id}`}>
-                                <Button bsStyle="primary">Details</Button>
-                            </LinkContainer>&nbsp;
-                            <LinkContainer to={`/${post.category}/${post.id}/edit`}>
-                                <Button bsStyle="default">Edit</Button>
-                            </LinkContainer>&nbsp;
-                            <DeleteButton
-                                objectType="post"
-                                itemId={post.id}
-                            />
-                        </p>
+                        <p className="post-body">{post.body}</p>
+                        <div className="post-details">
+                            <p>
+                                <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
+                                <Label bsStyle="success"><Glyphicon glyph="comment" /> {postComments.length} </Label>
+                            </p>
+                            <p>
+                                <Label bsStyle="primary"><Glyphicon glyph="user" /> {post.author} </Label>&nbsp;
+                                <Label bsStyle="info"><Glyphicon glyph="time" /> {helpers.formatDate(post.timestamp)} </Label>
+                            </p>
+                            <PostVoteForm post={post} />
+                            <br />
+                            <p>
+                                <LinkContainer to={`/${post.category}/${post.id}`}>
+                                    <Button bsStyle="primary">Details</Button>
+                                </LinkContainer>&nbsp;
+                                <LinkContainer to={`/${post.category}/${post.id}/edit`}>
+                                    <Button bsStyle="default">Edit</Button>
+                                </LinkContainer>&nbsp;
+                                <DeleteButton
+                                    objectType="post"
+                                    itemId={post.id}
+                                />
+                            </p>
+                        </div>
                     </div>
                 </div>
             </Col>
