@@ -53,6 +53,16 @@ class PostInList extends Component {
     }
 }
 
+PostInList.propTypes = {
+    post: PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        body: PropTypes.string.isRequired,
+        category: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+    }),
+    postComments: PropTypes.array.isRequired
+}
+
 function mapStateToProps (state, ownProps) {
     const postId = ownProps.post.id
 
