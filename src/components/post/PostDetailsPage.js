@@ -10,6 +10,7 @@ import PostCommentBox from './comment/PostCommentBox'
 import * as commentActions from '../../actions/commentActions'
 import * as helpers from '../../utils/helpers'
 import PropTypes from 'prop-types'
+import DocumentTitle from 'react-document-title'
 
 
 class PostDetailsPage extends Component{
@@ -83,49 +84,51 @@ class PostDetailsPage extends Component{
         const { postComments } = this.state
 
         return (
-            <div>
-                <div className="page-header">
-                    {post &&
-                        <div>
-                            <h1>{post.title}</h1>
-                                <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
-                                <Label bsStyle="primary"><Glyphicon glyph="user" /> {post.author} </Label>&nbsp;
-                                <Label bsStyle="info"><Glyphicon glyph="time" /> {helpers.formatDate(post.timestamp)} </Label>&nbsp;
-                        </div>
-                    }
-                </div>
-                <p className="lead">{post.body}</p>
+            <DocumentTitle title={`Readable - ${post.title}`}>
                 <div>
-                    <PostVoteForm post={post} />
+                    <div className="page-header">
+                        {post &&
+                            <div>
+                                <h1>{post.title}</h1>
+                                    <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
+                                    <Label bsStyle="primary"><Glyphicon glyph="user" /> {post.author} </Label>&nbsp;
+                                    <Label bsStyle="info"><Glyphicon glyph="time" /> {helpers.formatDate(post.timestamp)} </Label>&nbsp;
+                            </div>
+                        }
+                    </div>
+                    <p className="lead">{post.body}</p>
+                    <div>
+                        <PostVoteForm post={post} />
+                    </div>
+                    <br/>
+                    <div>
+                        <LinkContainer to={`/${post.category}/${post.id}/edit`}>
+                            <Button bsStyle="default">Edit</Button>
+                        </LinkContainer>&nbsp;
+                        <DeleteButton
+                            objectType="post"
+                            itemId={post.id}
+                            redirectAfterSuccess={true}
+                        />
+                    </div>
+                    <br />
+                    <div>
+                        <PostCommentBox
+                            onChange={this.handleInputChange}
+                            onSubmit={this.onCommentSubmit}
+                            comment={this.state.comment}
+                            errors={this.state.commentErrors}
+                        />
+                    </div>
+                    <div>
+                        <PostCommentList
+                            comments={postComments}
+                            onCommentEdit={this.onCommentEdit}
+                            loading={this.props.loading}
+                        />
+                    </div>
                 </div>
-                <br/>
-                <div>
-                    <LinkContainer to={`/${post.category}/${post.id}/edit`}>
-                        <Button bsStyle="default">Edit</Button>
-                    </LinkContainer>&nbsp;
-                    <DeleteButton
-                        objectType="post"
-                        itemId={post.id}
-                        redirectAfterSuccess={true}
-                    />
-                </div>
-                <br />
-                <div>
-                    <PostCommentBox
-                        onChange={this.handleInputChange}
-                        onSubmit={this.onCommentSubmit}
-                        comment={this.state.comment}
-                        errors={this.state.commentErrors}
-                    />
-                </div>
-                <div>
-                    <PostCommentList
-                        comments={postComments}
-                        onCommentEdit={this.onCommentEdit}
-                        loading={this.props.loading}
-                    />
-                </div>
-            </div>
+            </DocumentTitle>
         )
     }
 }

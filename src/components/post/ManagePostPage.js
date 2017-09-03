@@ -4,6 +4,7 @@ import  { bindActionCreators } from 'redux'
 import PostForm from './PostForm'
 import * as postActions from '../../actions/postActions'
 import PropTypes from 'prop-types'
+import DocumentTitle from 'react-document-title'
 
 class ManagePostPage extends Component{
     state = {
@@ -75,13 +76,15 @@ class ManagePostPage extends Component{
 
     render() {
         return (
-            <PostForm
-                post={this.state.post}
-                categories={this.props.categories}
-                onChange={this.handleChange}
-                onSubmit={this.onSave}
-                errors={this.state.errors}
-            />
+            <DocumentTitle title={`${this.props.match.params.id ? 'Edit' : 'Add new'} post`}>
+                <PostForm
+                    post={this.state.post}
+                    categories={this.props.categories}
+                    onChange={this.handleChange}
+                    onSubmit={this.onSave}
+                    errors={this.state.errors}
+                />
+            </DocumentTitle>
         )
     }
 }
