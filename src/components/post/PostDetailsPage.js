@@ -91,7 +91,7 @@ class PostDetailsPage extends Component{
                     :
                     <div>
                         <div className="page-header">
-                            {post &&
+                            {post.title &&
                             <div>
                                 <h1>{post.title}</h1>
                                 <Label bsStyle="default"><Glyphicon glyph="tag"/> {post.category} </Label>&nbsp;
