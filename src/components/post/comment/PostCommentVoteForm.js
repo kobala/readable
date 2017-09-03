@@ -14,7 +14,7 @@ class PostCommentVoteForm extends Component {
         const { comment } = this.props
 
         return(
-            <div className="action">
+            <div className="action vote-form">
                 <Button bsSize="xs" onClick={() => this.handleVotePostComment('upVote')}>
                     <Glyphicon glyph="chevron-up" />
                 </Button>

@@ -14,7 +14,7 @@ class PostVoteForm extends Component {
         const { post } = this.props
 
         return(
-            <div>
+            <div className="vote-form">
                 <Button bsSize="xsmall" onClick={() => this.handleVotePost('upVote')}><Glyphicon glyph="chevron-up" /></Button>
                 &nbsp;<Label bsStyle={post.voteScore >= 0 ? 'success' : 'danger'}>{post.voteScore}</Label>&nbsp;
                 <Button bsSize="xsmall" onClick={() => this.handleVotePost('downVote')}><Glyphicon glyph="chevron-down" /></Button>

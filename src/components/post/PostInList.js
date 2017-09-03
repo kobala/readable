@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Col } from 'react-bootstrap'
+import { Button, Col, Label, Glyphicon } from 'react-bootstrap'
 import * as helpers from '../../utils/helpers'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
@@ -19,26 +19,35 @@ class PostInList extends Component {
         const { post, postComments } = this.props
 
         return(
-            <Col xs={6} md={4}>
-                <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
-                <span>{helpers.formatDate(post.timestamp)}</span>
-                <p>{post.body}</p>
-                <p>By: <b>{post.author}</b></p>
-                <p>Comments: <b>{postComments.length}</b></p>
-                <PostVoteForm post={post} />
-                <hr />
-                <p>
-                    <LinkContainer to={`/post/${post.id}`}>
-                        <Button bsStyle="primary">Details</Button>
-                    </LinkContainer>&nbsp;
-                    <LinkContainer to={`/post/${post.id}/edit`}>
-                        <Button bsStyle="default">Edit</Button>
-                    </LinkContainer>&nbsp;
-                    <DeleteButton
-                        objectType="post"
-                        itemId={post.id}
-                    />
-                </p>
+            <Col xs={6} md={4} className="post-list-item">
+                <div className="thumbnail">
+                    <div className="caption">
+                        <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
+                        <p>{post.body}</p>
+                        <p>
+                            <Label bsStyle="default"><Glyphicon glyph="tag" /> {post.category} </Label>&nbsp;
+                            <Label bsStyle="success"><Glyphicon glyph="comment" /> {postComments.length} </Label>
+                        </p>
+                        <p>
+                            <Label bsStyle="primary"><Glyphicon glyph="user" /> {post.author} </Label>&nbsp;
+                            <Label bsStyle="info"><Glyphicon glyph="time" /> {helpers.formatDate(post.timestamp)} </Label>
+                        </p>
+                        <PostVoteForm post={post} />
+                        <br />
+                        <p>
+                            <LinkContainer to={`/post/${post.id}`}>
+                                <Button bsStyle="primary">Details</Button>
+                            </LinkContainer>&nbsp;
+                            <LinkContainer to={`/post/${post.id}/edit`}>
+                                <Button bsStyle="default">Edit</Button>
+                            </LinkContainer>&nbsp;
+                            <DeleteButton
+                                objectType="post"
+                                itemId={post.id}
+                            />
+                        </p>
+                    </div>
+                </div>
             </Col>
         )
     }

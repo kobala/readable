@@ -6,6 +6,7 @@ import { withRouter } from 'react-router'
 import  { bindActionCreators } from 'redux'
 import * as filterActions from '../../actions/filterActions'
 import FilterPane from '../common/FilterPane'
+import '../../styles/PostList.css'
 import PostInList from './PostInList'
 import PropTypes from 'prop-types'
 
@@ -36,9 +37,12 @@ class PostList extends Component{
                         keyword={keyword}
                         onKeywordChange={this.handleKeywordChange}
                     />
-                    {posts.map((post, key) => (
-                        <PostInList post={post} key={key} />
-                    ))}
+                    <hr/>
+                    <Row className="display-flex">
+                        {posts.map((post, key) => (
+                            <PostInList post={post} key={key} />
+                        ))}
+                    </Row>
                 </Row>
             </Grid>
         )

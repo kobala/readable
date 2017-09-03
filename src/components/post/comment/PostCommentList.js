@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import  { bindActionCreators } from 'redux'
 import * as filterActions from '../../../actions/filterActions'
 import * as helpers from '../../../utils/helpers'
-import '../../../styles/postCommentList.css'
+import '../../../styles/PostCommentList.css'
 import PropTypes from 'prop-types'
 
 class PostCommentList extends Component {
@@ -30,7 +30,7 @@ class PostCommentList extends Component {
 
         const panelHeading = (
             <div>
-                <Glyphicon glyph="comment" />
+                <Glyphicon glyph="comment" />&nbsp;
                 <h3 className="panel-title">
                     Comments
                 </h3>

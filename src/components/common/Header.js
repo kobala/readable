@@ -31,7 +31,7 @@ function Header ({ categories, loading }) {
                     <Navbar.Form pullRight>
                         <FormGroup>
                             <LinkContainer to="/post/create">
-                                <Button>Add post</Button>
+                                <Button bsStyle="success">Add post</Button>
                             </LinkContainer>
                         </FormGroup>
                     </Navbar.Form>
