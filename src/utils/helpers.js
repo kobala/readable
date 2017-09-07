@@ -19,7 +19,7 @@ export function formatDate(timestamp) {
         "November", "December"
     ]
 
-    const date = new Date(timestamp);
+    const date = new Date(timestamp)
 
     return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()} ${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}`
 }

@@ -7,7 +7,7 @@ class PostsPage extends Component{
     render () {
         const { category } = this.props.match.params
 
-        const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
+        const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1)
 
         return (
             <DocumentTitle title={`Readable - ${categoryTitle}`}>

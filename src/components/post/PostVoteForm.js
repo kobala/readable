@@ -15,9 +15,15 @@ class PostVoteForm extends Component {
 
         return(
             <div className="vote-form">
-                <Button bsSize="xsmall" onClick={() => this.handleVotePost('upVote')}><Glyphicon glyph="chevron-up" /></Button>
-                &nbsp;<Label bsStyle={post.voteScore >= 0 ? 'success' : 'danger'}>{post.voteScore}</Label>&nbsp;
-                <Button bsSize="xsmall" onClick={() => this.handleVotePost('downVote')}><Glyphicon glyph="chevron-down" /></Button>
+                <Button bsSize="xsmall" onClick={() => this.handleVotePost('upVote')}>
+                    <Glyphicon glyph="chevron-up" />
+                </Button>&nbsp;
+                <Label bsStyle={post.voteScore >= 0 ? 'success' : 'danger'}>
+                    {post.voteScore}
+                </Label>&nbsp;
+                <Button bsSize="xsmall" onClick={() => this.handleVotePost('downVote')}>
+                    <Glyphicon glyph="chevron-down" />
+                </Button>
             </div>
         )
     }

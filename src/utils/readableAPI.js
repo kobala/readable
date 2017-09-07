@@ -15,10 +15,6 @@ export const getAllCategories = () =>
         .then(res => res.json())
         .then(data => data.categories)
 
-export const getPostsByCategory = (category) =>
-    fetch(`${api}/${category}/posts`, { headers })
-        .then(res => res.json())
-
 export const getAllPosts = () =>
     fetch(`${api}/posts`, { headers })
         .then(res => res.json())
@@ -32,10 +28,6 @@ export const savePost = (post) =>
         },
         body: JSON.stringify(post)
     }).then(res => res.json())
-
-export const getPostById = (postId) =>
-    fetch(`${api}/posts/${postId}`, { headers })
-        .then(res => res.json())
 
 export const votePost = (postId, option) =>
     fetch(`${api}/posts/${postId}`, {
@@ -79,10 +71,6 @@ export const saveComment = (comment) =>
         },
         body: JSON.stringify(comment)
     }).then(res => res.json())
-
-export const getCommentById = (commentID) =>
-    fetch(`${api}/comments/${commentID}`, { headers })
-        .then(res => res.json())
 
 export const voteComment = (commentId, option) =>
     fetch(`${api}/comments/${commentId}`, {
