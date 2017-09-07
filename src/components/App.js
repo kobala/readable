@@ -2,16 +2,11 @@ import React, { Component } from 'react'
 import '../styles/App.css'
 import Header from './common/Header'
 import Footer from './common/Footer'
-import PageNotFound from './common/PageNotFound'
 import '../styles/bootstrap/css/bootstrap.css'
-import { Switch, Route } from 'react-router-dom'
-import DefaultPage from './default/DefaultPage'
-import ManagePostPage from './post/ManagePostPage'
-import PostDetailsPage from './post/PostDetailsPage'
-import PostsPage from './category/PostsPage'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
+import Routes from '../routes'
 
 class App extends Component {
   render () {
@@ -20,14 +15,7 @@ class App extends Component {
           <div id="wrap">
             <Header categories={this.props.categories} loading={this.props.loading}/>
               <div className="container">
-                <Switch>
-                  <Route exact path="/" component={DefaultPage} />
-                  <Route exact path="/create" component={ManagePostPage} />
-                  <Route exact path="/:category/:id/edit" component={ManagePostPage} />
-                  <Route exact path="/:category/:id" component={PostDetailsPage} />
-                  <Route exact path="/:category" component={PostsPage}/>
-                  <Route component={PageNotFound}/>
-                </Switch>
+                  {Routes}
               </div>
           </div>
           <Footer />
